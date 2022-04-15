@@ -4,6 +4,7 @@ import fr.esgi.location.use_case.location.VoitureNotFountException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Mohamed.ElBarcani - Nicolas Fernandes - Steven Heddadj - Jamal Sidikou
@@ -32,4 +33,16 @@ public class Choix {
                 .findFirst().orElseThrow(VoitureNotFountException::new);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Choix choix = (Choix) o;
+        return Objects.equals(dateDisponibilite, choix.dateDisponibilite) && Objects.equals(kilometrage, choix.kilometrage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dateDisponibilite, kilometrage);
+    }
 }

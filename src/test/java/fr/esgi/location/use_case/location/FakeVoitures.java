@@ -14,7 +14,23 @@ import java.util.Optional;
  */
 public class FakeVoitures implements VoitureRepo {
 
-    List<Voiture> voitures;
+    private final List<Voiture> voitures;
+
+    public FakeVoitures(){
+        voitures = new ArrayList<>();
+
+        Voiture v1 = new Voiture("1",LocalDate.of(2022, 02, 02),3000);
+        v1.setDisponibilite(true);
+        voitures.add(v1);
+
+        Voiture v2 = new Voiture("2",LocalDate.of(2022, 02, 03),3000);
+        v2.setDisponibilite(true);
+        voitures.add(v2);
+
+        Voiture v3 = new Voiture("3",LocalDate.of(2022, 02, 02),3000);
+        v3.setDisponibilite(true);
+        voitures.add(v3);
+    }
 
     @Override
     public Optional<Voiture> save(Voiture voiture){
@@ -38,22 +54,6 @@ public class FakeVoitures implements VoitureRepo {
     @Override
     public List<Voiture> findToutesLesVoitures() {
         return voitures;
-    }
-
-    public FakeVoitures(){
-        voitures = new ArrayList<>();
-
-        Voiture v1 = new Voiture("1",LocalDate.of(2022, 02, 02),3000);
-        v1.setDisponibilite(true);
-        voitures.add(v1);
-
-        Voiture v2 = new Voiture("2",LocalDate.of(2022, 02, 03),3000);
-        v2.setDisponibilite(true);
-        voitures.add(v2);
-
-        Voiture v3 = new Voiture("3",LocalDate.of(2022, 02, 02),3000);
-        v3.setDisponibilite(true);
-        voitures.add(v3);
     }
 
 }

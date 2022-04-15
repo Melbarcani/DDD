@@ -3,14 +3,8 @@ package fr.esgi.location.use_case.location;
 import fr.esgi.location.infrastructure.location.ClientRepo;
 import fr.esgi.location.infrastructure.location.ContratRepo;
 import fr.esgi.location.infrastructure.location.VoitureRepo;
-import fr.esgi.location.model.location.Voiture;
-import fr.esgi.location.model.location.Client;
-import fr.esgi.location.model.location.ContratLocation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,9 +1,5 @@
 package fr.esgi.location.model.location;
 
-import fr.esgi.location.infrastructure.location.VoitureRepo;
-import fr.esgi.location.use_case.location.VoitureNotFountException;
-import org.springframework.cglib.core.Local;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -46,11 +42,11 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return this.getKilometrage() == client.getKilometrage() && Objects.equals(clientId, client.clientId) && Objects.equals(this.getDateDisponibilite(), client.getDateDisponibilite());
+        return Objects.equals(choix, client.choix);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(clientId, choix.getDateDisponibilite(), choix.getKilometrage());
+        return Objects.hash(choix);
     }
 }

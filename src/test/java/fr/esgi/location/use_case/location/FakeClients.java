@@ -12,7 +12,7 @@ import java.util.Map;
  * @since 4/14/2022
  */
 public class FakeClients implements ClientRepo {
-    Map<String, Client> clientMap;
+    private final Map<String, Client> clientMap;
 
     public FakeClients() {
         clientMap = new HashMap<>();

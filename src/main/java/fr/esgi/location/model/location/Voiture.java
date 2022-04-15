@@ -38,18 +38,17 @@ public class Voiture {
         this.estDisponible = dispo;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Voiture voiture = (Voiture) o;
-        return this.getMaxKilometre() == voiture.getMaxKilometre() && Objects.equals(id, voiture.id) && Objects.equals(this.getDateDisponibilite(), voiture.getDateDisponibilite()) && Objects.equals(estDisponible, voiture.estDisponible);
+        return estDisponible == voiture.estDisponible && Objects.equals(voitureDetails, voiture.voitureDetails);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, this.getMaxKilometre(), this.getDateDisponibilite(), estDisponible);
+        return Objects.hash(voitureDetails, estDisponible);
     }
 
     public boolean matchKilometrage(Integer kilometrage) {
