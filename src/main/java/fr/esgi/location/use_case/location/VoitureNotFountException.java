@@ -1,7 +1,4 @@
-package fr.esgi.location.use_case.catalogue;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+package fr.esgi.location.use_case.location;
 /*
  * Copyright (c) 2022, Assets Japan and/or its affiliates.
  * All rights reserved.
@@ -16,8 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Description
  *
  * @author Mohamed.ElBarcani
- * @since 4/13/2022
+ * @since 4/14/2022
  */
-class ValiderVoitureTest {
-
+public class VoitureNotFountException extends RuntimeException {
 }
