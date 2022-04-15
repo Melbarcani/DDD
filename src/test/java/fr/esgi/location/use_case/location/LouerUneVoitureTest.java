@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import static org.approvaltests.combinations.CombinationApprovals.verifyAllCombinations;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -57,9 +58,11 @@ class LouerUneVoitureTest {
         client1.setDateDisponibilite(LocalDate.of(2022, 02, 02));
         client1.setKilometrage(3000);
 
+        List<Voiture> voituresDisponibles = voitureRepo.findVoituresByDate(client1.getDateDisponibilite());
+
         var contratLocation = new LouerUneVoiture(voitureRepo, clientRepo, contratRepo).louer("1");
 
-        var expectedResult = new ContratLocation();
+        var expectedResult = new ContratLocation(client1, voituresDisponibles);
         expectedResult.setVoiture(v1);
         expectedResult.setClient(client1);
         assertEquals(expectedResult.getVoiture().getId(), contratLocation.getVoiture().getId());

@@ -42,7 +42,7 @@ public class FakeVoitures implements VoitureRepo {
     public void reserver(Voiture voiture) {
         voitures.stream().filter(v -> v.getId().equals(voiture.getId()))
                 .findFirst()
-                .get().setDisponibilite(false);
+                .ifPresent(v -> v.setDisponibilite(false));
     }
 
     public FakeVoitures(){

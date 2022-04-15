@@ -4,6 +4,7 @@ import fr.esgi.location.infrastructure.location.ClientRepo;
 import fr.esgi.location.infrastructure.location.ContratRepo;
 import fr.esgi.location.infrastructure.location.VoitureRepo;
 import fr.esgi.location.model.catalogue.Voiture;
+import fr.esgi.location.model.location.Client;
 import fr.esgi.location.model.location.ContratLocation;
 
 import java.util.List;
@@ -17,9 +18,9 @@ import java.util.Optional;
  */
 public class LouerUneVoiture {
 
-    private VoitureRepo voitureRepo;
-    private ClientRepo clientRepo;
-    private ContratRepo contratRepo;
+    private final VoitureRepo voitureRepo;
+    private final ClientRepo clientRepo;
+    private final ContratRepo contratRepo;
 
     public LouerUneVoiture(VoitureRepo voitureRepo, ClientRepo clientRepo, ContratRepo contratRepo) {
         this.voitureRepo = voitureRepo;
@@ -30,17 +31,11 @@ public class LouerUneVoiture {
     public ContratLocation louer(String clientId) {
         var client = clientRepo.findClientById(clientId);
         List<Voiture> voituresDisponibles = voitureRepo.findVoituresByDate(client.getDateDisponibilite());
-        Optional<Voiture> voitureTrouvee = voituresDisponibles.stream().filter(
-                        voitureDisponible -> voitureDisponible.getMaxKilometre() >= client.getKilometrage())
-                .findFirst();
 
-        Voiture voiture = voitureTrouvee.orElseThrow(VoitureNotFountException::new);
-        voitureRepo.reserver(voiture);
-
-        ContratLocation contratLocation = new ContratLocation();
+        ContratLocation contratLocation = new ContratLocation(client, voituresDisponibles);
         contratLocation.setClient(client);
-        contratLocation.setVoiture(voiture);
 
+        voitureRepo.reserver(contratLocation.getVoiture());
         contratRepo.save(contratLocation);
 
         return contratLocation;
