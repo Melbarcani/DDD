@@ -9,28 +9,14 @@ import fr.esgi.location.model.location.ContratLocation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.approvaltests.combinations.CombinationApprovals.verifyAllCombinations;
-
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/*
- * Copyright (c) 2022, Assets Japan and/or its affiliates.
- * All rights reserved.
- *
- * https://www.assetsjapan.com/
- *
- * Assets Japan, PROPRIETARY/CONFIDENTIAL.
- * Unauthorized reproduction, modification or communication is strictly prohibited.
- */
 
 /**
- * Description
- *
- * @author Mohamed.ElBarcani
+ * @author Mohamed.ElBarcani - Nicolas Fernandes - Steven Heddadj - Jamal Sidikou
  * @since 4/14/2022
  */
 class LouerUneVoitureTest {
@@ -47,11 +33,11 @@ class LouerUneVoitureTest {
 
     @Test
     void louer() {
-        var v1 = new Voiture();
-        v1.setId("1");
-        v1.setMaxKilometre(3000);
-        v1.setDateDisponibilite(LocalDate.of(2022, 02, 02));
-        v1.setEstDisponible(true);
+        var expectedVoiture1 = new Voiture();
+        expectedVoiture1.setId("1");
+        expectedVoiture1.setMaxKilometre(3000);
+        expectedVoiture1.setDateDisponibilite(LocalDate.of(2022, 02, 02));
+        expectedVoiture1.setDisponibilite(false);
 
         var client1 = new Client();
         client1.setClientId("1");
@@ -62,10 +48,31 @@ class LouerUneVoitureTest {
 
         var contratLocation = new LouerUneVoiture(voitureRepo, clientRepo, contratRepo).louer("1");
 
-        var expectedResult = new ContratLocation(client1, voituresDisponibles);
-        expectedResult.setVoiture(v1);
+        var expectedResult = new ContratLocation(client1, expectedVoiture1);
+        expectedResult.setVoiture(expectedVoiture1);
         expectedResult.setClient(client1);
         assertEquals(expectedResult.getVoiture().getId(), contratLocation.getVoiture().getId());
         assertEquals(expectedResult.getClient().getClientId(), contratLocation.getClient().getClientId());
+
+       /* var expectedVoiture2 = new Voiture();
+        expectedVoiture2.setId("2");
+        expectedVoiture2.setMaxKilometre(3000);
+        expectedVoiture2.setDateDisponibilite(LocalDate.of(2022, 02, 03));
+        expectedVoiture2.setDisponibilite(false);
+
+        var client2 = new Client();
+        client2.setClientId("2");
+        client2.setDateDisponibilite(LocalDate.of(2022, 02, 03));
+        client2.setKilometrage(3000);
+
+        List<Voiture> voituresDisponibles2 = voitureRepo.findVoituresByDate(client2.getDateDisponibilite());
+
+        var contratLocation2 = new LouerUneVoiture(voitureRepo, clientRepo, contratRepo).louer("2");
+
+        var expectedResult2 = new ContratLocation(client2, voituresDisponibles2, voitureRepo);
+        expectedResult2.setVoiture(expectedVoiture2);
+        expectedResult2.setClient(client2);
+        assertEquals(expectedResult2.getVoiture().getId(), contratLocation2.getVoiture().getId());
+        assertEquals(expectedResult2.getClient().getClientId(), contratLocation2.getClient().getClientId());*/
     }
 }

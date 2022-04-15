@@ -8,9 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Description
- *
- * @author Mohamed.ElBarcani
+ * @author Mohamed.ElBarcani - Nicolas Fernandes - Steven Heddadj - Jamal Sidikou
  * @since 4/14/2022
  */
 public class FakeClients implements ClientRepo {
@@ -29,7 +27,7 @@ public class FakeClients implements ClientRepo {
         Client client2 = new Client();
         client2.setClientId("2");
         client2.setDateDisponibilite(LocalDate.of(2022, 02, 03));
-        client2.setKilometrage(2000);
+        client2.setKilometrage(3000);
 
         clientMap.put(client2.getClientId(), client2);
 

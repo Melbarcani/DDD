@@ -2,18 +2,15 @@ package fr.esgi.location.use_case.location;
 
 import fr.esgi.location.infrastructure.location.ClientRepo;
 import fr.esgi.location.infrastructure.location.ContratRepo;
+import fr.esgi.location.infrastructure.location.VoitureFinder;
 import fr.esgi.location.infrastructure.location.VoitureRepo;
 import fr.esgi.location.model.catalogue.Voiture;
-import fr.esgi.location.model.location.Client;
 import fr.esgi.location.model.location.ContratLocation;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
- * Description
- *
- * @author Mohamed.ElBarcani
+ * @author Mohamed.ElBarcani - Nicolas Fernandes - Steven Heddadj - Jamal Sidikou
  * @since 4/14/2022
  */
 public class LouerUneVoiture {
@@ -32,13 +29,10 @@ public class LouerUneVoiture {
         var client = clientRepo.findClientById(clientId);
         List<Voiture> voituresDisponibles = voitureRepo.findVoituresByDate(client.getDateDisponibilite());
 
-        ContratLocation contratLocation = new ContratLocation(client, voituresDisponibles);
-        contratLocation.setClient(client);
+        Voiture voiture = new VoitureFinder().findVoitureDisponible(client, voituresDisponibles, voitureRepo);
+        ContratLocation contratLocation = new ContratLocation(client, voiture);
 
-        voitureRepo.reserver(contratLocation.getVoiture());
         contratRepo.save(contratLocation);
-
         return contratLocation;
-
     }
 }

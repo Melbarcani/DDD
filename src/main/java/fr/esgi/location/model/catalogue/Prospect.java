@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Description
- *
- * @author Mohamed.ElBarcani
+ * @author Mohamed.ElBarcani - Nicolas Fernandes - Steven Heddadj - Jamal Sidikou
  * @since 4/13/2022
  */
 

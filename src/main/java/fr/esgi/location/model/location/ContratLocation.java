@@ -1,5 +1,6 @@
 package fr.esgi.location.model.location;
 
+import fr.esgi.location.infrastructure.location.VoitureRepo;
 import fr.esgi.location.model.catalogue.Voiture;
 import fr.esgi.location.use_case.location.VoitureNotFountException;
 
@@ -7,9 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Description
- *
- * @author Mohamed.ElBarcani
+ * @author Mohamed.ElBarcani - Nicolas Fernandes - Steven Heddadj - Jamal Sidikou
  * @since 4/14/2022
  */
 
@@ -17,13 +16,9 @@ public class ContratLocation {
     private Client client;
     private Voiture voiture;
 
-    public ContratLocation(Client client, List<Voiture> voituresDisponibles) {
+    public ContratLocation(Client client, Voiture voiture) {
         this.client = client;
-        this.voiture = voituresDisponibles.stream().filter(
-                        voitureDisponible -> voitureDisponible.getMaxKilometre() >= client.getKilometrage())
-                .findFirst().orElseThrow(VoitureNotFountException::new);
-
-
+        this.voiture = voiture;
     }
 
     public void setClient(Client client) {

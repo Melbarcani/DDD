@@ -1,21 +1,10 @@
 package fr.esgi.location.model.catalogue;
-/*
- * Copyright (c) 2022, Assets Japan and/or its affiliates.
- * All rights reserved.
- *
- * https://www.assetsjapan.com/
- *
- * Assets Japan, PROPRIETARY/CONFIDENTIAL.
- * Unauthorized reproduction, modification or communication is strictly prohibited.
- */
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * Description
- *
- * @author Mohamed.ElBarcani
+ * @author Mohamed.ElBarcani - Nicolas Fernandes - Steven Heddadj - Jamal Sidikou
  * @since 4/13/2022
  */
 public class Voiture {
@@ -23,15 +12,6 @@ public class Voiture {
     private String id;
     private int maxKilometre;
     private LocalDate dateDisponibilite;
-
-    public Boolean getEstDisponible() {
-        return estDisponible;
-    }
-
-    public void setEstDisponible(Boolean estDisponible) {
-        this.estDisponible = estDisponible;
-    }
-
     private Boolean estDisponible;
 
     public String getId() {

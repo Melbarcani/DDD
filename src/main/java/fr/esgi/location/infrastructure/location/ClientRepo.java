@@ -5,9 +5,7 @@ import fr.esgi.location.model.location.Client;
 import java.util.Optional;
 
 /**
- * Description
- *
- * @author Mohamed.ElBarcani
+ * @author Mohamed.ElBarcani - Nicolas Fernandes - Steven Heddadj - Jamal Sidikou
  * @since 4/14/2022
  */
 public interface ClientRepo {

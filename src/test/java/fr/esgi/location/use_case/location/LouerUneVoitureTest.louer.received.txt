@@ -1,5 +1,0 @@
-[1] => fr.esgi.location.use_case.location.VoitureNotFountException: null 
-[2] => fr.esgi.location.use_case.location.VoitureNotFountException: null 
-[3] => java.lang.NullPointerException: Cannot invoke "fr.esgi.location.model.location.Client.getDateDisponibilite()" because "client" is null 
-[4] => java.lang.NullPointerException: Cannot invoke "fr.esgi.location.model.location.Client.getDateDisponibilite()" because "client" is null 
-[null] => java.lang.NullPointerException: Cannot invoke "fr.esgi.location.model.location.Client.getDateDisponibilite()" because "client" is null 
