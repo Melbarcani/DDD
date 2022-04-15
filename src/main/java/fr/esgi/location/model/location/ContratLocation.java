@@ -1,10 +1,5 @@
 package fr.esgi.location.model.location;
 
-import fr.esgi.location.infrastructure.location.VoitureRepo;
-import fr.esgi.location.model.catalogue.Voiture;
-import fr.esgi.location.use_case.location.VoitureNotFountException;
-
-import java.util.List;
 import java.util.Objects;
 
 /**

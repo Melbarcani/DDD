@@ -1,7 +1,7 @@
 package fr.esgi.location.use_case.location;
 
 import fr.esgi.location.infrastructure.location.VoitureRepo;
-import fr.esgi.location.model.catalogue.Voiture;
+import fr.esgi.location.model.location.Voiture;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,27 +35,23 @@ public class FakeVoitures implements VoitureRepo {
         return v;
     }
 
+    @Override
+    public List<Voiture> findToutesLesVoitures() {
+        return voitures;
+    }
+
     public FakeVoitures(){
         voitures = new ArrayList<>();
 
-        Voiture v1 = new Voiture();
-        v1.setId("1");
-        v1.setMaxKilometre(3000);
-        v1.setDateDisponibilite(LocalDate.of(2022,02,02));
+        Voiture v1 = new Voiture("1",LocalDate.of(2022, 02, 02),3000);
         v1.setDisponibilite(true);
         voitures.add(v1);
 
-        Voiture v2 = new Voiture();
-        v2.setId("2");
-        v2.setMaxKilometre(3000);
-        v2.setDateDisponibilite(LocalDate.of(2022,02,03));
+        Voiture v2 = new Voiture("2",LocalDate.of(2022, 02, 03),3000);
         v2.setDisponibilite(true);
         voitures.add(v2);
 
-        Voiture v3 = new Voiture();
-        v3.setId("3");
-        v3.setMaxKilometre(3000);
-        v3.setDateDisponibilite(LocalDate.of(2022,02,02));
+        Voiture v3 = new Voiture("3",LocalDate.of(2022, 02, 02),3000);
         v3.setDisponibilite(true);
         voitures.add(v3);
     }

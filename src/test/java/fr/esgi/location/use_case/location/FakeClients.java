@@ -16,20 +16,13 @@ public class FakeClients implements ClientRepo {
 
     public FakeClients() {
         clientMap = new HashMap<>();
-
-        Client client1 = new Client();
-        client1.setClientId("1");
-        client1.setDateDisponibilite(LocalDate.of(2022, 02, 02));
-        client1.setKilometrage(3000);
+        Client client1 = new Client("1").setChoix(LocalDate.of(2022, 2, 2), 3000);
+        Client client2 = new Client("2").setChoix(LocalDate.of(2022, 2, 3), 3000);
+        Client client3 = new Client("3").setChoix(LocalDate.of(2022, 2, 1), 1000);
 
         clientMap.put(client1.getClientId(), client1);
-
-        Client client2 = new Client();
-        client2.setClientId("2");
-        client2.setDateDisponibilite(LocalDate.of(2022, 02, 03));
-        client2.setKilometrage(3000);
-
         clientMap.put(client2.getClientId(), client2);
+        clientMap.put(client3.getClientId(), client3);
 
     }
 

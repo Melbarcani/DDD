@@ -1,6 +1,6 @@
 package fr.esgi.location.infrastructure.location;
 
-import fr.esgi.location.model.catalogue.Voiture;
+import fr.esgi.location.model.location.Voiture;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,4 +16,6 @@ public interface VoitureRepo {
     List<Voiture> findVoituresByDate(LocalDate availability);
 
     Voiture reserver(Voiture voiture);
+
+    List<Voiture> findToutesLesVoitures();
 }

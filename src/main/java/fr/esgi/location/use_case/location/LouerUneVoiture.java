@@ -2,9 +2,9 @@ package fr.esgi.location.use_case.location;
 
 import fr.esgi.location.infrastructure.location.ClientRepo;
 import fr.esgi.location.infrastructure.location.ContratRepo;
-import fr.esgi.location.infrastructure.location.VoitureFinder;
+import fr.esgi.location.infrastructure.location.ReserveVoiture;
 import fr.esgi.location.infrastructure.location.VoitureRepo;
-import fr.esgi.location.model.catalogue.Voiture;
+import fr.esgi.location.model.location.Voiture;
 import fr.esgi.location.model.location.ContratLocation;
 
 import java.util.List;
@@ -27,9 +27,8 @@ public class LouerUneVoiture {
 
     public ContratLocation louer(String clientId) {
         var client = clientRepo.findClientById(clientId);
-        List<Voiture> voituresDisponibles = voitureRepo.findVoituresByDate(client.getDateDisponibilite());
 
-        Voiture voiture = new VoitureFinder().findVoitureDisponible(client, voituresDisponibles, voitureRepo);
+        Voiture voiture = new ReserveVoiture().findVoitureDisponible(client, voitureRepo);
         ContratLocation contratLocation = new ContratLocation(client, voiture);
 
         contratRepo.save(contratLocation);
